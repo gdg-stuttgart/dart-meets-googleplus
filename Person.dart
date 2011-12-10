@@ -32,4 +32,7 @@ class Person {
     _name = name;
   }
 
+  String toString(){
+    return _vorname + " " + _name;
+  }
 }

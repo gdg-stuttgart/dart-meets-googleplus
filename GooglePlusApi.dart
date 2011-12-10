@@ -7,11 +7,21 @@ class GooglePlusApi {
   }
 
   Person findPerson(String accountId) {
-    print(_getUrlFor(accountId));
+    String url = _getUrlFor(accountId);
+    doRequest(url);
   }
   
   String _getUrlFor(String accountId){
     return _URL.replaceFirst("{%1}", accountId).replaceFirst("{%2}", _API_KEY);
   }
 
+  void doRequest(String url){
+  
+    XMLHttpRequest request = new XMLHttpRequest();
+    request.open('GET', url, false); 
+    request.send();
+    
+    print(request.status);
+    print(request.responseText);
+  }
 }
